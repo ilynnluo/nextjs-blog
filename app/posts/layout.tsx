@@ -1,7 +1,7 @@
-import Topbar from "./topbar/Topbar"
-import SideMenu from "./sideMenu/SideMenu"
-import MainList from "./mainList/MainList"
-import DetailPage from "./detailPage/detailPage"
+import Topbar from "../components/topbar/Topbar"
+import SideMenu from "../components/sideMenu/SideMenu"
+import MainList from "../components/mainList/MainList"
+import DetailPage from "../components/detailPage/detailPage"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
         <div className="col-span-5 sm:col-span-4">
           <main>
-            <MainList />
+            <DetailPage />
           </main>
         </div>
       </div>
