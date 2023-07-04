@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
         <div className="col-span-5 sm:col-span-4">
           <main>
-            <MainList />
+            <MainList postsData={[]} />
           </main>
         </div>
       </div>
