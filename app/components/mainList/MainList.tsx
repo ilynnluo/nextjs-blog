@@ -1,18 +1,44 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getLocalData } from '@/lib/localdata'
+import { getLocalData } from '@/lib/localdata.js'
+
+interface PostProp {
+  postsData: {
+    "id": number
+    "title": string
+    "introduction": string
+    "length": number
+    "unit": string
+    "departure": {
+      "province": string
+      "city": string
+    }[],
+    "desitination":
+      {
+        "id": number
+        "province": string
+        "city": string
+        "spot": string
+        "type": string
+        "activitives": string[]
+      }
+  }[]
+}
 
 export async function getStaticProps() {
   console.log('------getStaticProps')
-  const postsData = await getLocalData()
+  const postsData = getLocalData()
   console.log('postsData: ', postsData)
   return {
     props: { postsData }
   }
 }
 
-export default function MainList(props: { postsData: any[] }) {
-  console.log('hello?????')
+function Print() {
+  console.log("!!!!! printing")
+}
+
+export default function MainList(props: PostProp) {
   return <div className='w-full'>
     {
       props.postsData.map((item: any) => (
