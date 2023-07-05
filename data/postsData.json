@@ -15,8 +15,18 @@
         "id": 1,
         "province": "Ontario",
         "city": "Geogina",
-        "spot": "Elpida Café & Roastery",
-        "features": "cafe",
+        "spots": [
+          {
+            "id": 1,
+            "name": "Elpida Café & Roastery"
+          }
+        ],
+        "features": [
+          {
+            "id": 1,
+            "name": "cafe"
+          }
+        ],
         "activities": [
           {
             "id": 1,
@@ -28,8 +38,18 @@
         "id": 2,
         "province": "Ontario",
         "city": "Geogina",
-        "spot": "Willow Beach Conservation Area",
-        "features": "park",
+        "spots": [
+          {
+            "id": 1,
+            "name": "Willow Beach Conservation Area"
+          }
+        ],
+        "features": [
+          {
+            "id": 1,
+            "name": "park"
+          }
+        ],
         "activities": [
           {
             "id": 1,
@@ -55,8 +75,18 @@
         "id": 1,
         "province": "Ontario",
         "city": "Caledonia",
-        "spot": "Kejimkujik National Park and National Historic Site",
-        "features": "park",
+        "spots": [
+          {
+            "id": 1,
+            "name": "Kejimkujik National Park and National Historic Site"
+          }
+        ],
+        "features": [
+          {
+            "id": 1,
+            "name": "park"
+          }
+        ],
         "activities": [
           {
             "id": 1,

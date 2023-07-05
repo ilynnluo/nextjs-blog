@@ -48,10 +48,10 @@ export default function SideMenu() {
           />
         </label>
       </form>
-      <nav className="pt-3">
+      <nav>
         {
           canadaMenu.map((item) => (
-            <div key={item.id} className="mt-6">
+            <div key={item.id} className="mt-5">
               <h3 className="text-base text-slate-600 font-semibold">{item.name}</h3>
               <ul>
                 {

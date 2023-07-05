@@ -17,8 +17,14 @@ interface PostProp {
     "id": number
     "province": string
     "city": string
-    "spot": string
-    "features": string
+    "spots": {
+      "id": number
+      "name": string
+    }[]
+    "features": {
+      "id": number
+      "name": string
+    }[]
     "activities": {
       "id": number
       "name": string
