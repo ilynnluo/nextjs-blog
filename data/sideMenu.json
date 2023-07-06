@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Ontario",
+    "children": [
+      {
+        "id": 1,
+        "name": "GTA"
+      },
+      {
+        "id": 2,
+        "name": "2h-GTA"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Nova Scotia",
+    "children": [
+      {
+        "id": 1,
+        "name": "Halifax"
+      },
+      {
+        "id": 2,
+        "name": "Lunenburg"
+      }
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 import Topbar from "../components/topbar/Topbar"
-import SideMenu from "../components/sideMenu/SideMenu"
+import SideMenu from "../components/mainContent/MainContent"
 import MainList from "../components/mainList/MainList"
 import DetailPage from "../components/detailPage/detailPage"
 

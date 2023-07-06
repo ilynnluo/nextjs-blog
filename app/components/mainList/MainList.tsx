@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import * as postData from '../../../data/postsData.json'
+import * as initPosts from '../../../data/postsData.json'
+import { useEffect, useState } from 'react'
 
 interface PostProp {
   "id": number
@@ -33,14 +34,19 @@ interface PostProp {
 }
 
 
-export default function MainList() {
+export default function MainList(props: { selectedSideMenuItem: string | null }) {
+  const selectedSideMenuItem = props.selectedSideMenuItem
+  const [postsResult, setPostsResult] = useState<PostProp[]>(initPosts)
+  console.log('postsData: ', initPosts)
+  console.log('postsResult: ', postsResult)
+  // fiter by selected menu
   return <div className='w-full'>
     {
-      postData.map((item: PostProp) => (
+      initPosts.map((item: PostProp) => (
         <div className="mb-4 mx-2 bg-white rounded-lg shadow-md overflow-hidden" key={item.id}>
           <Link className="md:flex" href='/posts'>
             <div className="md:shrink-0">
-              <Image className="object-cover md:w-44 md:h-60" width={180} height={240} src={item.cover} alt="Simco Lake" />
+              <Image className="object-cover w-full h-auto md:w-44 md:h-60" width='180' height='240' priority={true} src={item.cover} alt="Simco Lake" />
             </div>
             <div className="p-4">
               <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{item.departure.province}</div>
