@@ -34,11 +34,15 @@ interface PostProp {
   }[]
 }
 
-export default function MainList(props: { selectedSideMenuItem: string }) {
+export default function MainList(props: { selectedSideMenuItem: string, keywordValue: string }) {
   const selectedSideMenuItem = props.selectedSideMenuItem
+  const keywordValue = props.keywordValue
   const postsData = initPosts.initPosts
-  let result = postsData.filter(post => post.areaTags.filter(tag => tag.includes(selectedSideMenuItem)).length !== 0)
   // fiter by selected menu
+  let menuResult = postsData.filter(post => post.areaTags.filter(tag => tag.includes(selectedSideMenuItem)).length !== 0)
+  // fiter by selected menu and title keyword
+  let result = menuResult.filter(post => post.title.includes(keywordValue))
+
   return <div className='w-full'>
     {
       result.map((post: PostProp) => (

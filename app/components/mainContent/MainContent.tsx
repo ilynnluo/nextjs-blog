@@ -1,6 +1,6 @@
 'use client'
-import { useState, MouseEvent } from 'react'
-import * as menuList from '../../../data/sideMenu.json'
+import { useState, MouseEvent, ChangeEvent } from 'react'
+import sideMenu from '../../../data/sideMenu.json' assert { type: 'json'}
 import MainList from '../mainList/MainList'
 
 interface MenuItemProp {
@@ -14,10 +14,14 @@ interface MenuItemProp {
 
 export default function MainContent() {
   const [selectedSideMenuItem, setSelectedSideMenuItem] = useState<string>('')
-  const handleSideMenu = (e: MouseEvent<HTMLButtonElement>) => {
-    setSelectedSideMenuItem(e.currentTarget.value)
-    console.log('Selected menu item: ', e.currentTarget.value)
+  const [keywordValue, setKeywordValue] = useState<string>('')
+  const sideMenuItems = sideMenu.sideMenu
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log('e.currentTarget.value: ', e.currentTarget.value)
+    setKeywordValue(e.currentTarget.value)
   }
+  const handleSideMenu = (e: MouseEvent<HTMLButtonElement>) => setSelectedSideMenuItem(e.currentTarget.value)
+
   return <div>
     {/* md design */}
     <div className="px-2 hidden sm:grid grid-cols-5 max-w-7xl mx-auto pt-6">
@@ -33,16 +37,21 @@ export default function MainContent() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
               </svg>
             </span>
-            <input type="text" className="w-full lg:w-60 py-2 pl-9 pr-3  placeholder:text-slate-400 font-medium block bg-white border border-slate-300 rounded-md 
+            <input
+              type="text"
+              className="w-full lg:w-60 py-2 pl-9 pr-3  placeholder:text-slate-400 font-medium block bg-white border border-slate-300 rounded-md 
            shadow-sm focus:outline-none sm:text-sm"
-              placeholder="Quick search" name="search"
+              placeholder="Quick search"
+              name="search"
+              value={keywordValue}
+              onChange={handleSearch}
             />
           </label>
         </form>
         {/* side menu */}
         <nav>
           {
-            menuList.map((item: MenuItemProp) => (
+            sideMenuItems.map((item: MenuItemProp) => (
               <div key={item.id} className="mt-5">
                 <h3 className="text-base text-slate-600 font-semibold">{item.name}</h3>
                 <ul>
@@ -69,7 +78,7 @@ export default function MainContent() {
       </div>
       {/* listing section */}
       <main className='col-span-4'>
-        <MainList selectedSideMenuItem={selectedSideMenuItem} />
+        <MainList selectedSideMenuItem={selectedSideMenuItem} keywordValue={keywordValue} />
       </main>
     </div>
     {/* sm design */}
@@ -92,7 +101,7 @@ export default function MainContent() {
       <nav className="text-center">
         <ul>
           {
-            menuList.map((item) => (
+            sideMenuItems.map((item) => (
               <li key={item.id}>
                 <button className="py-3 active:text-sky-600">
                   {item.name}
