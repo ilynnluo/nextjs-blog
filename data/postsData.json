@@ -1,4 +1,5 @@
-[
+{
+  "initPosts": [
   {
     "id": 1,
     "title": "Swimming and picnic in Willow Beach Conservation Area",
@@ -101,3 +102,4 @@
     ]
   }
 ]
+}

@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import * as initPosts from '../../../data/postsData.json'
-import { useEffect, useState } from 'react'
+import initPosts from '../../../data/postsData.json' assert { type: "json" }
 
 interface PostProp {
   "id": number
@@ -33,16 +33,13 @@ interface PostProp {
   }[]
 }
 
-
 export default function MainList(props: { selectedSideMenuItem: string | null }) {
   const selectedSideMenuItem = props.selectedSideMenuItem
-  const [postsResult, setPostsResult] = useState<PostProp[]>(initPosts)
-  console.log('postsData: ', initPosts)
-  console.log('postsResult: ', postsResult)
+  const [postsResult, setPostsResult] = useState<PostProp[]>(initPosts.initPosts)
   // fiter by selected menu
   return <div className='w-full'>
     {
-      initPosts.map((item: PostProp) => (
+      postsResult.map((item: PostProp) => (
         <div className="mb-4 mx-2 bg-white rounded-lg shadow-md overflow-hidden" key={item.id}>
           <Link className="md:flex" href='/posts'>
             <div className="md:shrink-0">
