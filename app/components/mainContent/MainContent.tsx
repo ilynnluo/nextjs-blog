@@ -13,7 +13,7 @@ interface MenuItemProp {
 }
 
 export default function MainContent() {
-  const [selectedSideMenuItem, setSelectedSideMenuItem] = useState<string | null>(null)
+  const [selectedSideMenuItem, setSelectedSideMenuItem] = useState<string>('')
   const handleSideMenu = (e: MouseEvent<HTMLButtonElement>) => {
     setSelectedSideMenuItem(e.currentTarget.value)
     console.log('Selected menu item: ', e.currentTarget.value)
