@@ -1,7 +1,6 @@
 'use client'
-import { useState, MouseEvent, ChangeEvent } from 'react'
+import { MouseEvent, ChangeEvent } from 'react'
 import sideMenu from '../../../data/sideMenu.json' assert { type: 'json'}
-import MainList from '../mainList/MainList'
 
 interface MenuItemProp {
   "id": number
@@ -12,21 +11,16 @@ interface MenuItemProp {
   }[]
 }
 
-export default function MainContent() {
-  const [selectedSideMenuItem, setSelectedSideMenuItem] = useState<string>('')
-  const [keywordValue, setKeywordValue] = useState<string>('')
+export default function Navbar( props: { handleSearch: (e: ChangeEvent<HTMLInputElement>) => void, handleSideMenu: (e: MouseEvent<HTMLButtonElement>) => void, keywordValue: string }) {
   const sideMenuItems = sideMenu.sideMenu
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('e.currentTarget.value: ', e.currentTarget.value)
-    setKeywordValue(e.currentTarget.value)
-  }
-  const handleSideMenu = (e: MouseEvent<HTMLButtonElement>) => setSelectedSideMenuItem(e.currentTarget.value)
-
+  const handleSearch = props.handleSearch
+  const handleSideMenu = props.handleSideMenu
+  const keywordValue = props.keywordValue
   return <div>
     {/* md design */}
-    <div className="px-2 hidden sm:grid grid-cols-5 max-w-7xl mx-auto pt-6">
+    <div className="px-2 hidden sm:grid">
       {/* filters section */}
-      <div className="col-span-1">
+      <div>
         {/* keyword search input */}
         <form action="submit">
           <label className="relative block">
@@ -75,11 +69,7 @@ export default function MainContent() {
             ))
           }
         </nav>
-      </div>
-      {/* listing section */}
-      <main className='col-span-4'>
-        <MainList selectedSideMenuItem={selectedSideMenuItem} keywordValue={keywordValue} />
-      </main>
+      </div>     
     </div>
     {/* sm design */}
     <div className="sm:hidden">

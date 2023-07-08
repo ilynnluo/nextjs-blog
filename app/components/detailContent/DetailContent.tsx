@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function DetailPage() {
+export default function DetailContent() {
   return (
     <div>
       {/* cucumber */}
