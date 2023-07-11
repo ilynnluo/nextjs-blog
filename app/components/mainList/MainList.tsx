@@ -51,7 +51,13 @@ export default function MainList(
         <div className="mb-4 mx-2 bg-white rounded-lg shadow-md overflow-hidden" key={post.id}>
           <Link className="md:flex" href='/posts'>
             <div className="md:shrink-0">
-              <Image className="object-cover w-full h-auto md:w-44 md:h-60" width='180' height='240' priority={true} src={post.cover} alt="Simco Lake" />
+              <Image
+                className="object-cover w-full h-auto"
+                // with style the warning about the ratio disappear
+                style={{ width: 180, height: 240 }}
+                width='180' height='240'
+                priority={true}
+                src={post.cover} alt="Simco Lake" />
             </div>
             <div className="p-4">
               <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{post.departure.province}</div>
