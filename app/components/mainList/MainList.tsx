@@ -34,7 +34,9 @@ interface PostProp {
   }[]
 }
 
-export default function MainList(props: { selectedSideMenuItem: string, keywordValue: string }) {
+export default function MainList(
+  props: { selectedSideMenuItem: string, keywordValue: string }
+) {
   const selectedSideMenuItem = props.selectedSideMenuItem
   const keywordValue = props.keywordValue
   const postsData = initPosts.initPosts

@@ -1,4 +1,3 @@
-'use client'
 import { MouseEvent, ChangeEvent } from 'react'
 import sideMenu from '../../../data/sideMenu.json' assert { type: 'json'}
 
@@ -11,7 +10,9 @@ interface MenuItemProp {
   }[]
 }
 
-export default function Navbar( props: { handleSearch: (e: ChangeEvent<HTMLInputElement>) => void, handleSideMenu: (e: MouseEvent<HTMLButtonElement>) => void, keywordValue: string }) {
+export default function Navbar( 
+  props: { handleSearch: (e: ChangeEvent<HTMLInputElement>) => void, handleSideMenu: (e: MouseEvent<HTMLButtonElement>) => void, keywordValue: string }
+  ) {
   const sideMenuItems = sideMenu.sideMenu
   const handleSearch = props.handleSearch
   const handleSideMenu = props.handleSideMenu
@@ -61,8 +62,7 @@ export default function Navbar( props: { handleSearch: (e: ChangeEvent<HTMLInput
                           {item.name}
                         </button>
                       </li>
-                    )
-                    )
+                    ))
                   }
                 </ul>
               </div>

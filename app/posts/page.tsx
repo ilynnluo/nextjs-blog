@@ -1,6 +1,7 @@
 'use client'
 import { useState, ChangeEvent, MouseEvent } from "react"
 import DetailLayout from "../posts/layout"
+import Topbar from "../components/topbar/Topbar"
 import Navbar from "../components/navbar/Navbar"
 import DetailContent from "../components/detailContent/DetailContent"
 
@@ -17,6 +18,7 @@ export default function Home() {
   }
   return (
     <DetailLayout>
+      <Topbar />
       <div className="grid grid-cols-5 max-w-7xl mx-auto pt-6">
         <div className="col-span-5 sm:col-span-1">
           <Navbar handleSearch={handleSearch} handleSideMenu={handleSideMenu} keywordValue={keywordValue} />

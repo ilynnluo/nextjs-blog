@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import Topbar from "../topbar/Topbar"
 
 export default function DetailContent() {
   return (
