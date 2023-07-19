@@ -1,8 +1,11 @@
+
 import Image from "next/image"
 import Link from "next/link"
-import Topbar from "../topbar/Topbar"
+import { PostProp } from "../mainList/MainList"
+import { spawn } from "child_process"
 
-export default function DetailContent() {
+export default function DetailContent({ post }: { post: PostProp | null }) {
+  console.log('recevied post: ', post)
   return (
     <div>
       {/* cucumber */}
@@ -16,24 +19,31 @@ export default function DetailContent() {
       {/* main content */}
       <div>
         <div className="p-4">
-          <div className="uppercase tracking-wide text-sm text-sky-400 font-semibold">Nova Scotia</div>
-          <h1 className="block mt-4 text-xl leading-tight font-medium text-black">Hiking in Kejimkujik National Park and National Historic Site</h1>
+          <div className="uppercase tracking-wide text-sm text-sky-400 font-semibold">{post?.departure.province}</div>
+          <h1 className="block mt-4 text-xl leading-tight font-medium text-black">{post?.title}</h1>
 
           <div className="flex mt-4">
             <h6 className="text-sm text-slate-800 font-semibold">Departure:</h6>
-            <h6 className="ml-2 text-sm text-slate-500">Halifax</h6>
+            <h6 className="ml-2 text-sm text-slate-500">{post?.departure.city}</h6>
           </div>
           <div className="flex mt-2">
             <h6 className="text-md text-slate-800 font-semibold">Destination:</h6>
-            <h6 className="ml-2 text-md text-slate-500">Caledonia</h6>
+            {
+              post?.desitinations.map((des) => <h6 key={des.id} className="ml-2 text-md text-slate-500">{des.city}</h6>)
+            }
           </div>
           <div className="flex mt-2">
-            <h6 className="text-md text-slate-800 font-semibold">Days:</h6>
-            <h6 className="ml-2 text-md text-slate-500">2</h6>
+            <h6 className="text-md text-slate-800 font-semibold">{post?.unit}:</h6>
+            <h6 className="ml-2 text-md text-slate-500">{post?.length}</h6>
           </div>
           <div className="flex mt-2">
-            <div className="py-0 px-2 rounded-xl bg-green-400 text-xs text-white">Hiking</div>
-            <div className="ml-2 py-0 px-2 rounded-xl bg-amber-400 text-xs text-white">Canoeing</div>
+            {
+              post?.desitinations.map((des) => <div key={des.id} className="mr-1 py-0 px-2 rounded-xl bg-green-400 text-xs text-white">
+                {
+                  des.activities.map((a) => <span key={a.id}>{a.name}</span>)
+                }
+                </div>)
+            }
           </div>
           <div className="mt-4">
             <p className="text-md text-slate-500">Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine?

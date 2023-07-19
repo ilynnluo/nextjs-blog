@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import axios from 'axios'
-// import * as initData from '../../../data/postsData.json' assert { type: 'json'}
 
-interface PostProp {
+export interface PostProp {
   "id": number
   "title": string
   "cover": string
@@ -40,9 +39,8 @@ export default function MainList(
 ) {
   const selectedSideMenuItem = props.selectedSideMenuItem
   const keywordValue = props.keywordValue
-  // const initPosts = initData.initPosts
   const [posts, setPosts] = useState<PostProp[]>([])
-  const postsData = async () => {
+  const getPosts = async () => {
     try {
       const { data: response } = await axios.get('http://localhost:3000/posts')
       setPosts(response)
@@ -52,10 +50,9 @@ export default function MainList(
     }
   }
   useEffect(() => {
-    postsData()
+    getPosts()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  // if (postsData !== undefined) {
   // fiter by selected menu
   let menuResult = posts.filter(post => post.areaTags.filter(tag => tag.includes(selectedSideMenuItem)).length !== 0)
   // fiter by selected menu and title keyword
@@ -65,7 +62,7 @@ export default function MainList(
     {
       result !== undefined && result.map((post: PostProp) => (
         <div className="mb-4 mx-2 bg-white rounded-lg shadow-md overflow-hidden" key={post.id}>
-          <Link className="md:flex" href='/posts'>
+          <Link className="md:flex" href='/posts/1'>
             <div className="md:shrink-0">
               <Image
                 className="object-cover w-full h-auto"

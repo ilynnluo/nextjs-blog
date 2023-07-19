@@ -1,24 +1,18 @@
 'use client'
 import { useState, ChangeEvent, MouseEvent } from "react"
-import MainLayout from "./layout"
+import RootLayout from "./layout"
 import MainList from "./components/mainList/MainList"
 import Navbar from "./components/navbar/Navbar"
-import DetailContent from "./components/detailContent/DetailContent"
 import Topbar from "./components/topbar/Topbar"
 
 export default function Home() {
   const [selectedSideMenuItem, setSelectedSideMenuItem] = useState<string>('')
   const [keywordValue, setKeywordValue] = useState<string>('')
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('keyword value: ', e.currentTarget.value)
-    setKeywordValue(e.currentTarget.value)
-  }
-  const handleSideMenu = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log('selected value: ', e.currentTarget.value)
-    setSelectedSideMenuItem(e.currentTarget.value)
-  }
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => setKeywordValue(e.currentTarget.value)
+  const handleSideMenu = (e: MouseEvent<HTMLButtonElement>) => setSelectedSideMenuItem(e.currentTarget.value)
+
   return (
-    <MainLayout>
+    <RootLayout>
       <Topbar />
       <div className="grid grid-cols-5 max-w-7xl mx-auto pt-6">
         <div className="col-span-5 sm:col-span-1">
@@ -28,6 +22,6 @@ export default function Home() {
           <MainList selectedSideMenuItem={selectedSideMenuItem} keywordValue={keywordValue} />
         </div>
       </div>
-    </MainLayout>
+    </RootLayout>
   )
 }
